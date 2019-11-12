@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C65CB30B237B52BF00C2C807 /* SQEmployeeListControllerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65CB30A237B52BF00C2C807 /* SQEmployeeListControllerModel.swift */; };
+		C65CB30E237B530E00C2C807 /* SQEmployee.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65CB30D237B530E00C2C807 /* SQEmployee.swift */; };
+		C65CB310237B546400C2C807 /* SQEmployeeFetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65CB30F237B546400C2C807 /* SQEmployeeFetchable.swift */; };
+		C65CB312237B575000C2C807 /* SQRemoteEmployeeFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65CB311237B575000C2C807 /* SQRemoteEmployeeFetcher.swift */; };
 		C6A5FD61237B4D5900C9377A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A5FD60237B4D5900C9377A /* AppDelegate.swift */; };
 		C6A5FD63237B4D5900C9377A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A5FD62237B4D5900C9377A /* SceneDelegate.swift */; };
 		C6A5FD65237B4D5900C9377A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A5FD64237B4D5900C9377A /* ViewController.swift */; };
@@ -14,6 +18,16 @@
 		C6A5FD6A237B4D5D00C9377A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6A5FD69237B4D5D00C9377A /* Assets.xcassets */; };
 		C6A5FD6D237B4D5D00C9377A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6A5FD6B237B4D5D00C9377A /* LaunchScreen.storyboard */; };
 		C6A5FD78237B4D5D00C9377A /* SquareEmployeesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A5FD77237B4D5D00C9377A /* SquareEmployeesTests.swift */; };
+		C6A5FD83237B4ED200C9377A /* SQEmployeeListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A5FD82237B4ED200C9377A /* SQEmployeeListController.swift */; };
+		C6A5FD87237B4F4E00C9377A /* ReuseIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A5FD84237B4F4E00C9377A /* ReuseIdentifiable.swift */; };
+		C6A5FD88237B4F4E00C9377A /* UILabel+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A5FD85237B4F4E00C9377A /* UILabel+Factory.swift */; };
+		C6A5FD89237B4F4E00C9377A /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A5FD86237B4F4E00C9377A /* UIView+Constraints.swift */; };
+		C6A5FD8F237B503F00C9377A /* SQImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A5FD8A237B503F00C9377A /* SQImageFetcher.swift */; };
+		C6A5FD90237B503F00C9377A /* SQImageCachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A5FD8B237B503F00C9377A /* SQImageCachable.swift */; };
+		C6A5FD91237B503F00C9377A /* SQImageCacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A5FD8C237B503F00C9377A /* SQImageCacher.swift */; };
+		C6A5FD92237B503F00C9377A /* SQRemoteFetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A5FD8D237B503F00C9377A /* SQRemoteFetchable.swift */; };
+		C6A5FD93237B503F00C9377A /* SQImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A5FD8E237B503F00C9377A /* SQImageView.swift */; };
+		C6A5FD96237B51AE00C9377A /* SQImageFetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A5FD95237B51AE00C9377A /* SQImageFetchable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C65CB30A237B52BF00C2C807 /* SQEmployeeListControllerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQEmployeeListControllerModel.swift; sourceTree = "<group>"; };
+		C65CB30D237B530E00C2C807 /* SQEmployee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQEmployee.swift; sourceTree = "<group>"; };
+		C65CB30F237B546400C2C807 /* SQEmployeeFetchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQEmployeeFetchable.swift; sourceTree = "<group>"; };
+		C65CB311237B575000C2C807 /* SQRemoteEmployeeFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQRemoteEmployeeFetcher.swift; sourceTree = "<group>"; };
 		C6A5FD5D237B4D5900C9377A /* SquareEmployees.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SquareEmployees.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6A5FD60237B4D5900C9377A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6A5FD62237B4D5900C9377A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +56,16 @@
 		C6A5FD73237B4D5D00C9377A /* SquareEmployeesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SquareEmployeesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6A5FD77237B4D5D00C9377A /* SquareEmployeesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareEmployeesTests.swift; sourceTree = "<group>"; };
 		C6A5FD79237B4D5D00C9377A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C6A5FD82237B4ED200C9377A /* SQEmployeeListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQEmployeeListController.swift; sourceTree = "<group>"; };
+		C6A5FD84237B4F4E00C9377A /* ReuseIdentifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReuseIdentifiable.swift; sourceTree = "<group>"; };
+		C6A5FD85237B4F4E00C9377A /* UILabel+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Factory.swift"; sourceTree = "<group>"; };
+		C6A5FD86237B4F4E00C9377A /* UIView+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
+		C6A5FD8A237B503F00C9377A /* SQImageFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQImageFetcher.swift; sourceTree = "<group>"; };
+		C6A5FD8B237B503F00C9377A /* SQImageCachable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQImageCachable.swift; sourceTree = "<group>"; };
+		C6A5FD8C237B503F00C9377A /* SQImageCacher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQImageCacher.swift; sourceTree = "<group>"; };
+		C6A5FD8D237B503F00C9377A /* SQRemoteFetchable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQRemoteFetchable.swift; sourceTree = "<group>"; };
+		C6A5FD8E237B503F00C9377A /* SQImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQImageView.swift; sourceTree = "<group>"; };
+		C6A5FD95237B51AE00C9377A /* SQImageFetchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQImageFetchable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +86,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C65CB309237B52A800C2C807 /* SQEmployeeListController */ = {
+			isa = PBXGroup;
+			children = (
+				C6A5FD82237B4ED200C9377A /* SQEmployeeListController.swift */,
+				C65CB30A237B52BF00C2C807 /* SQEmployeeListControllerModel.swift */,
+			);
+			path = SQEmployeeListController;
+			sourceTree = "<group>";
+		};
+		C65CB30C237B530100C2C807 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				C65CB30D237B530E00C2C807 /* SQEmployee.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		C6A5FD54237B4D5900C9377A = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +124,9 @@
 		C6A5FD5F237B4D5900C9377A /* SquareEmployees */ = {
 			isa = PBXGroup;
 			children = (
+				C65CB30C237B530100C2C807 /* Data */,
+				C65CB309237B52A800C2C807 /* SQEmployeeListController */,
+				C6A5FD94237B517100C9377A /* Utilitiy */,
 				C6A5FD60237B4D5900C9377A /* AppDelegate.swift */,
 				C6A5FD62237B4D5900C9377A /* SceneDelegate.swift */,
 				C6A5FD64237B4D5900C9377A /* ViewController.swift */,
@@ -97,6 +145,40 @@
 				C6A5FD79237B4D5D00C9377A /* Info.plist */,
 			);
 			path = SquareEmployeesTests;
+			sourceTree = "<group>";
+		};
+		C6A5FD94237B517100C9377A /* Utilitiy */ = {
+			isa = PBXGroup;
+			children = (
+				C6A5FD97237B51F100C9377A /* Cache */,
+				C6A5FD98237B520300C9377A /* Network */,
+				C6A5FD8E237B503F00C9377A /* SQImageView.swift */,
+				C6A5FD84237B4F4E00C9377A /* ReuseIdentifiable.swift */,
+				C6A5FD85237B4F4E00C9377A /* UILabel+Factory.swift */,
+				C6A5FD86237B4F4E00C9377A /* UIView+Constraints.swift */,
+			);
+			path = Utilitiy;
+			sourceTree = "<group>";
+		};
+		C6A5FD97237B51F100C9377A /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				C6A5FD8B237B503F00C9377A /* SQImageCachable.swift */,
+				C6A5FD8C237B503F00C9377A /* SQImageCacher.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		C6A5FD98237B520300C9377A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C6A5FD95237B51AE00C9377A /* SQImageFetchable.swift */,
+				C6A5FD8A237B503F00C9377A /* SQImageFetcher.swift */,
+				C6A5FD8D237B503F00C9377A /* SQRemoteFetchable.swift */,
+				C65CB30F237B546400C2C807 /* SQEmployeeFetchable.swift */,
+				C65CB311237B575000C2C807 /* SQRemoteEmployeeFetcher.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,8 +283,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6A5FD65237B4D5900C9377A /* ViewController.swift in Sources */,
+				C65CB30B237B52BF00C2C807 /* SQEmployeeListControllerModel.swift in Sources */,
+				C6A5FD87237B4F4E00C9377A /* ReuseIdentifiable.swift in Sources */,
+				C6A5FD93237B503F00C9377A /* SQImageView.swift in Sources */,
+				C6A5FD83237B4ED200C9377A /* SQEmployeeListController.swift in Sources */,
+				C6A5FD90237B503F00C9377A /* SQImageCachable.swift in Sources */,
+				C6A5FD96237B51AE00C9377A /* SQImageFetchable.swift in Sources */,
+				C65CB310237B546400C2C807 /* SQEmployeeFetchable.swift in Sources */,
+				C6A5FD89237B4F4E00C9377A /* UIView+Constraints.swift in Sources */,
 				C6A5FD61237B4D5900C9377A /* AppDelegate.swift in Sources */,
 				C6A5FD63237B4D5900C9377A /* SceneDelegate.swift in Sources */,
+				C6A5FD92237B503F00C9377A /* SQRemoteFetchable.swift in Sources */,
+				C6A5FD88237B4F4E00C9377A /* UILabel+Factory.swift in Sources */,
+				C65CB312237B575000C2C807 /* SQRemoteEmployeeFetcher.swift in Sources */,
+				C65CB30E237B530E00C2C807 /* SQEmployee.swift in Sources */,
+				C6A5FD8F237B503F00C9377A /* SQImageFetcher.swift in Sources */,
+				C6A5FD91237B503F00C9377A /* SQImageCacher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
