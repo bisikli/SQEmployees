@@ -14,9 +14,19 @@ class SQImageCacher : SQImageCachable {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
     }
+    
+    func createDirectoryIfNotExists(at url: URL) throws {
+        if !FileManager.default.fileExists(atPath: url.path) {
+            try FileManager.default.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
+        }
+    }
 
-    func getImageDirectory(for urlString: String) -> URL {
-        return getDocumentsDirectory().appendingPathComponent(urlString)
+    func getImageDirectory(for string: String) -> URL {
+        var fileKey = string
+        if let urlComponents = URLComponents(string: string) {
+            fileKey = "\(urlComponents.hashValue)"
+        }
+        return getDocumentsDirectory().appendingPathComponent(fileKey + ".jpg")
     }
     
     func getImage(_ key: String) -> UIImage? {

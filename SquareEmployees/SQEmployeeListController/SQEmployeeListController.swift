@@ -15,11 +15,17 @@ class SQEmployeeListController: UITableViewController {
     init(_ viewModel: SQEmployeeListControllerModel = SQEmployeeListControllerModel()) {
         self.viewModel = viewModel
         super.init(style: .plain)
+        tableView.register(SQEmployeeListCell.self, forCellReuseIdentifier: SQEmployeeListCell.reuseIdentifier)
         bind()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        viewModel.send(.fetch)
     }
     
     private func bind() {
@@ -41,5 +47,14 @@ class SQEmployeeListController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.employees.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: SQEmployeeListCell.reuseIdentifier, for: indexPath) as! SQEmployeeListCell
+        
+        viewModel.cellModel(for: indexPath).decorate(cell)
+        
+        return cell
+        
     }
 }

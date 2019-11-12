@@ -11,6 +11,8 @@
 		C65CB30E237B530E00C2C807 /* SQEmployee.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65CB30D237B530E00C2C807 /* SQEmployee.swift */; };
 		C65CB310237B546400C2C807 /* SQEmployeeFetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65CB30F237B546400C2C807 /* SQEmployeeFetchable.swift */; };
 		C65CB312237B575000C2C807 /* SQRemoteEmployeeFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65CB311237B575000C2C807 /* SQRemoteEmployeeFetcher.swift */; };
+		C65CB315237B5D7000C2C807 /* SQEmployeeListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65CB314237B5D7000C2C807 /* SQEmployeeListCell.swift */; };
+		C65CB317237B5E9000C2C807 /* SQEmployeeListCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65CB316237B5E9000C2C807 /* SQEmployeeListCellModel.swift */; };
 		C6A5FD61237B4D5900C9377A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A5FD60237B4D5900C9377A /* AppDelegate.swift */; };
 		C6A5FD63237B4D5900C9377A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A5FD62237B4D5900C9377A /* SceneDelegate.swift */; };
 		C6A5FD65237B4D5900C9377A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A5FD64237B4D5900C9377A /* ViewController.swift */; };
@@ -45,6 +47,8 @@
 		C65CB30D237B530E00C2C807 /* SQEmployee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQEmployee.swift; sourceTree = "<group>"; };
 		C65CB30F237B546400C2C807 /* SQEmployeeFetchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQEmployeeFetchable.swift; sourceTree = "<group>"; };
 		C65CB311237B575000C2C807 /* SQRemoteEmployeeFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQRemoteEmployeeFetcher.swift; sourceTree = "<group>"; };
+		C65CB314237B5D7000C2C807 /* SQEmployeeListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQEmployeeListCell.swift; sourceTree = "<group>"; };
+		C65CB316237B5E9000C2C807 /* SQEmployeeListCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQEmployeeListCellModel.swift; sourceTree = "<group>"; };
 		C6A5FD5D237B4D5900C9377A /* SquareEmployees.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SquareEmployees.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6A5FD60237B4D5900C9377A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6A5FD62237B4D5900C9377A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +107,15 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		C65CB313237B5D5600C2C807 /* SQEmployeeListCell */ = {
+			isa = PBXGroup;
+			children = (
+				C65CB314237B5D7000C2C807 /* SQEmployeeListCell.swift */,
+				C65CB316237B5E9000C2C807 /* SQEmployeeListCellModel.swift */,
+			);
+			path = SQEmployeeListCell;
+			sourceTree = "<group>";
+		};
 		C6A5FD54237B4D5900C9377A = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +137,7 @@
 		C6A5FD5F237B4D5900C9377A /* SquareEmployees */ = {
 			isa = PBXGroup;
 			children = (
+				C65CB313237B5D5600C2C807 /* SQEmployeeListCell */,
 				C65CB30C237B530100C2C807 /* Data */,
 				C65CB309237B52A800C2C807 /* SQEmployeeListController */,
 				C6A5FD94237B517100C9377A /* Utilitiy */,
@@ -291,6 +305,7 @@
 				C6A5FD96237B51AE00C9377A /* SQImageFetchable.swift in Sources */,
 				C65CB310237B546400C2C807 /* SQEmployeeFetchable.swift in Sources */,
 				C6A5FD89237B4F4E00C9377A /* UIView+Constraints.swift in Sources */,
+				C65CB315237B5D7000C2C807 /* SQEmployeeListCell.swift in Sources */,
 				C6A5FD61237B4D5900C9377A /* AppDelegate.swift in Sources */,
 				C6A5FD63237B4D5900C9377A /* SceneDelegate.swift in Sources */,
 				C6A5FD92237B503F00C9377A /* SQRemoteFetchable.swift in Sources */,
@@ -299,6 +314,7 @@
 				C65CB30E237B530E00C2C807 /* SQEmployee.swift in Sources */,
 				C6A5FD8F237B503F00C9377A /* SQImageFetcher.swift in Sources */,
 				C6A5FD91237B503F00C9377A /* SQImageCacher.swift in Sources */,
+				C65CB317237B5E9000C2C807 /* SQEmployeeListCellModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

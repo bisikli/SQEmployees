@@ -49,4 +49,12 @@ class SQEmployeeListControllerModel {
             break
         }
     }
+    
+    func cellModel(for indexPath: IndexPath) -> SQEmployeeListCellModel {
+        let employee = employees[indexPath.row]
+        return SQEmployeeListCellModel(picture: employee.photo_url_small,
+                                       name: employee.full_name,
+                                       team: employee.team,
+                                       email: employee.email_address)
+    }
 }
