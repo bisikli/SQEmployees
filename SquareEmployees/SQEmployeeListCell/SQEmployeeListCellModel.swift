@@ -19,7 +19,7 @@ struct SQEmployeeListCellModel {
         cell.name.text = name
         cell.team.text = team
         cell.email.text = email
-        cell.picture.loadImage(with: picture ?? "", placeholder: UIImage(systemName: "person.circle"))
+        cell.picture.loadImage(with: picture ?? "", placeholder: UIImage(systemName: "person.circle.fill"))
     }
     
 }

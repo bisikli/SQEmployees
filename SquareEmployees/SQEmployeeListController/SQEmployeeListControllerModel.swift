@@ -16,7 +16,7 @@ class SQEmployeeListControllerModel {
     }
     
     enum Status {
-        case busy(Bool)
+        case busy
         case error(Error)
         case success
     }
@@ -26,17 +26,16 @@ class SQEmployeeListControllerModel {
     var employees: [SQEmployee] = []
     var onStatusChanged : (Status)->Void = { _ in }
     
-    init(_ fetcher: SQEmployeeFetchable = SQRemoteEmployeeFetcher()) {
+    init(_ fetcher: SQEmployeeFetchable = SQRemoteEmployeeFetcher(SQRemoteEmployeeFetchAPI.default.rawValue)) {
         self.fetcher = fetcher
     }
     
     func send(_ action: Action) {
         switch action {
         case .fetch:
-            self.onStatusChanged(.busy(true))
+            self.onStatusChanged(.busy)
             fetcher.fetchEmployees { [unowned self] (result) in
                 DispatchQueue.main.async {
-                    self.onStatusChanged(.busy(false))
                     switch result {
                     case .failure(let error):
                         self.onStatusChanged(.error(error))

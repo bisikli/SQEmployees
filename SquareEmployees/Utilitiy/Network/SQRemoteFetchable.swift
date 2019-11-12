@@ -14,6 +14,20 @@ enum SQRemoteFetcherError: Error {
     case networkError(error: Error)
     case jsonParseError(description: String)
 }
+extension SQRemoteFetcherError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .urlError:
+            return NSLocalizedString("URL cannot be formed", comment: "")
+        case .dataRecieveError:
+            return NSLocalizedString("Data received fail", comment: "")
+        case .networkError(let error):
+            return NSLocalizedString("Network fail - \(error.localizedDescription)", comment: "")
+        case .jsonParseError(let description):
+            return NSLocalizedString("JSON parser fail - \(description)", comment: "")
+        }
+    }
+}
 
 protocol SQRemoteFetchable {
     associatedtype DataType:Codable

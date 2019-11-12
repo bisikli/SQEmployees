@@ -22,7 +22,7 @@ class SQEmployeeListCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        picture.image = UIImage(systemName: "film")!
+        picture.image = UIImage(systemName: "person.circle.fill")!
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
