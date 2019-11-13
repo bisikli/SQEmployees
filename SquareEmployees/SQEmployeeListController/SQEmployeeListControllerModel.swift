@@ -12,7 +12,6 @@ class SQEmployeeListControllerModel {
     
     enum Action {
         case fetch
-        //case sortMovies(SortOption)
     }
     
     enum Status {

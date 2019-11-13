@@ -99,12 +99,12 @@
 			path = SQEmployeeListController;
 			sourceTree = "<group>";
 		};
-		C65CB30C237B530100C2C807 /* Data */ = {
+		C65CB30C237B530100C2C807 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				C65CB30D237B530E00C2C807 /* SQEmployee.swift */,
 			);
-			path = Data;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		C65CB313237B5D5600C2C807 /* SQEmployeeListCell */ = {
@@ -137,8 +137,8 @@
 		C6A5FD5F237B4D5900C9377A /* SquareEmployees */ = {
 			isa = PBXGroup;
 			children = (
+				C65CB30C237B530100C2C807 /* Model */,
 				C65CB313237B5D5600C2C807 /* SQEmployeeListCell */,
-				C65CB30C237B530100C2C807 /* Data */,
 				C65CB309237B52A800C2C807 /* SQEmployeeListController */,
 				C6A5FD94237B517100C9377A /* Utilitiy */,
 				C6A5FD60237B4D5900C9377A /* AppDelegate.swift */,
