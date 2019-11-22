@@ -21,27 +21,37 @@ class SQImageCacher : SQImageCachable {
         }
     }
 
-    func getImageDirectory(for string: String) -> URL {
-        var fileKey = string
-        if let urlComponents = URLComponents(string: string) {
-            fileKey = "\(urlComponents.hashValue)"
-        }
-        return getDocumentsDirectory().appendingPathComponent(fileKey + ".jpg")
+    func getImageDirectory(for key: String) -> URL {
+        return getDocumentsDirectory().appendingPathComponent(key + ".jpg")
     }
     
     func getImage(_ key: String) -> UIImage? {
-        guard let data = try? Data(contentsOf: getImageDirectory(for: key)) else { return nil }
+
+        guard let fileKey = keyMap[key] else { return nil }
+        
+        guard let data = try? Data(contentsOf: getImageDirectory(for: fileKey)) else { return nil }
         return UIImage(data: data)
         
     }
     func saveImage(_ image: UIImage, key: String) {
         do {
-            try image.pngData()?.write(to: getImageDirectory(for: key), options: .atomic)
+            let fileKey = keyMap[key,default:UUID().uuidString]
+            try image.pngData()?.write(to: getImageDirectory(for: fileKey), options: .atomic)
+            keyMap[key] = fileKey
         } catch {
             print("Image file write error: \(error)")
         }
         
     
+    }
+    
+    private var keyMap : [String:String] {
+        get {
+            UserDefaults.standard.value(forKey: "SQImageCacher.keyMap") as? [String:String] ?? [:]
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "SQImageCacher.keyMap")
+        }
     }
     
 }

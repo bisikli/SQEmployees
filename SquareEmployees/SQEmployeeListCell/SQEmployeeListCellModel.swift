@@ -8,12 +8,19 @@
 
 import UIKit
 
-struct SQEmployeeListCellModel {
+struct SQEmployeeListCellModel:Hashable {
     
     let picture: String?
     let name: String
     let team: String
     let email: String
+    
+    init(_ employee: SQEmployee) {
+        picture = employee.photo_url_small
+        name    = employee.full_name
+        team    = employee.team
+        email   = employee.email_address
+    }
     
     func decorate(_ cell: SQEmployeeListCell) {
         cell.name.text = name

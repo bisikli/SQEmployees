@@ -17,6 +17,7 @@ class SQEmployeeListController: UITableViewController {
         super.init(style: .plain)
         tableView.tableFooterView = UIView()
         tableView.register(SQEmployeeListCell.self, forCellReuseIdentifier: SQEmployeeListCell.reuseIdentifier)
+        tableView.dataSource = viewModel.createDataSource(using: tableView)
         bind()
     }
     
@@ -36,29 +37,12 @@ class SQEmployeeListController: UITableViewController {
                 self.handleBusyState()
             case .error(let error):
                 self.handleEmptyState("Error fetching employees: \n \(error.localizedDescription)")
-            case .success:
-                self.handleReload()
+            case .empty:
+                self.handleEmptyState("There are no Employees..")
             }
         }
     }
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.employees.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SQEmployeeListCell.reuseIdentifier, for: indexPath) as! SQEmployeeListCell
         
-        viewModel.cellModel(for: indexPath).decorate(cell)
-        
-        return cell
-        
-    }
-    
     func handleBusyState() {
         tableView.separatorStyle = .none
         let indicator = UIImageView(image: UIImage(systemName: "person.circle.fill"))
@@ -96,13 +80,7 @@ class SQEmployeeListController: UITableViewController {
         tableView.backgroundView = messageLabel;
     }
     
-    func handleReload() {
-        if viewModel.employees.count > 0 {
-            self.tableView.backgroundView = nil
-            self.tableView.separatorStyle = .singleLine
-        } else {
-            handleEmptyState("There are no Employees..")
-        }
-        self.tableView.reloadData()
-    }
+    
 }
+
+

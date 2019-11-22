@@ -6,7 +6,11 @@
 //  Copyright © 2019 Bilgehan Işıklı. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+enum SQEmployeeListSection: CaseIterable {
+    case employee
+}
 
 class SQEmployeeListControllerModel {
     
@@ -17,12 +21,13 @@ class SQEmployeeListControllerModel {
     enum Status {
         case busy
         case error(Error)
-        case success
+        case empty
     }
     
     private let fetcher: SQEmployeeFetchable
+    private var diffableDataSource : UITableViewDiffableDataSource<SQEmployeeListSection, SQEmployeeListCellModel>?
     
-    var employees: [SQEmployee] = []
+    private var cellModels = [SQEmployeeListCellModel]()
     var onStatusChanged : (Status)->Void = { _ in }
     
     init(_ fetcher: SQEmployeeFetchable = SQRemoteEmployeeFetcher(SQRemoteEmployeeFetchAPI.default.rawValue)) {
@@ -39,8 +44,11 @@ class SQEmployeeListControllerModel {
                     case .failure(let error):
                         self.onStatusChanged(.error(error))
                     case .success(let employees):
-                        self.employees = employees
-                        self.onStatusChanged(.success)
+                        self.cellModels = employees.map(SQEmployeeListCellModel.init)
+                        self.diffableDataSource?.apply(self.snapshot, animatingDifferences: false)
+                        if self.cellModels.isEmpty {
+                            self.onStatusChanged(.empty)
+                        }
                     }
                 }
             }
@@ -48,11 +56,26 @@ class SQEmployeeListControllerModel {
         }
     }
     
-    func cellModel(for indexPath: IndexPath) -> SQEmployeeListCellModel {
-        let employee = employees[indexPath.row]
-        return SQEmployeeListCellModel(picture: employee.photo_url_small,
-                                       name: employee.full_name,
-                                       team: employee.team,
-                                       email: employee.email_address)
+    func createDataSource(using tableView: UITableView) -> UITableViewDiffableDataSource<SQEmployeeListSection, SQEmployeeListCellModel>? {
+        diffableDataSource = UITableViewDiffableDataSource(tableView: tableView) { (tableView, indexPath, cellModel) -> UITableViewCell? in
+                
+            let cell = tableView.dequeueReusableCell(withIdentifier: SQEmployeeListCell.reuseIdentifier, for: indexPath) as! SQEmployeeListCell
+            
+            cellModel.decorate(cell)
+            
+            return cell
+        }
+        
+        return diffableDataSource!
     }
+    
+    var snapshot : NSDiffableDataSourceSnapshot<SQEmployeeListSection,SQEmployeeListCellModel> {
+        var snapshot = NSDiffableDataSourceSnapshot<SQEmployeeListSection,SQEmployeeListCellModel>()
+        snapshot.appendSections(SQEmployeeListSection.allCases)
+        snapshot.appendItems(cellModels)
+        return snapshot
+    }
+    
+    
 }
+
