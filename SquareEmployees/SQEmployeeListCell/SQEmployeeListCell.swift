@@ -9,7 +9,7 @@
 import UIKit
 
 class SQEmployeeListCell: UITableViewCell {
-    let picture         = SQImageView()
+    let picture         = UIImageView()
     lazy var name       = UILabel.create().addingFont(UIFont.preferredFont(forTextStyle: .headline))
     lazy var team       = UILabel.create().addingFont(UIFont.preferredFont(forTextStyle: .subheadline))
     lazy var email      = UILabel.create().addingFont(UIFont.preferredFont(forTextStyle: .caption2))
@@ -17,7 +17,7 @@ class SQEmployeeListCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
-        decorate()
+        setupUI()
     }
     
     override func prepareForReuse() {
@@ -27,6 +27,22 @@ class SQEmployeeListCell: UITableViewCell {
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func decorate(_ model: SQEmployeeListCellModel) {
+        name.text  = model.name
+        team.text  = model.team
+        email.text = model.email
+        picture.image = UIImage(systemName: "person.circle.fill")
+        model.fetchImage { (result) in
+            switch result {
+            case .failure(let error):
+                //handle failure of loading an image here
+                break
+            case .success(let image):
+                self.picture.image = image
+            }
+        }
     }
     
 
@@ -51,7 +67,7 @@ class SQEmployeeListCell: UITableViewCell {
         
     }
     
-    private func decorate() {
+    private func setupUI() {
         picture.contentMode = .scaleAspectFit
     }
 }

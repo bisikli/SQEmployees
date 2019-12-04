@@ -8,11 +8,17 @@
 
 import UIKit
 
-struct SQRemoteImageFetcher : SQImageFetcheble {
+class SQRemoteImageFetcher : SQImageFetcheble {
+    
+    private var dataTask: URLSessionDataTask?
     
     func fetchImage(with url: URL, _ handler: @escaping SQImageFetcheble.Handler) {
         
-        func onResult(_ result: Result<UIImage, Error>) {
+        if let existingTask = dataTask,  existingTask.state == .suspended {
+            existingTask.resume()
+        }
+        
+        func onResultInMainThread(_ result: Result<UIImage, Error>) {
             DispatchQueue.main.async {
                 handler(result)
             }
@@ -20,14 +26,14 @@ struct SQRemoteImageFetcher : SQImageFetcheble {
         
         let urlRequest = URLRequest(url: url)
         let session = URLSession.shared
-        let task = session.dataTask(with: urlRequest) {
+        dataTask = session.dataTask(with: urlRequest) { [weak self]
             (data, response, error) in
             guard let responseData = data else {
-                onResult(.failure(SQRemoteFetcherError.dataRecieveError))
+                onResultInMainThread(.failure(SQRemoteFetcherError.dataRecieveError))
                 return
             }
             guard error == nil else {
-                onResult(.failure(SQRemoteFetcherError.networkError(error: error!)))
+                onResultInMainThread(.failure(SQRemoteFetcherError.networkError(error: error!)))
                 return
             }
             
@@ -35,10 +41,17 @@ struct SQRemoteImageFetcher : SQImageFetcheble {
                 return
             }
             
-            onResult(.success(image))
+            onResultInMainThread(.success(image))
+            
+            self?.dataTask = nil
         }
-        task.resume()
-        
+        dataTask?.resume()
         
     }
+    
+    func pauseFetching() {
+        dataTask?.suspend()
+    }
+    
+    
 }

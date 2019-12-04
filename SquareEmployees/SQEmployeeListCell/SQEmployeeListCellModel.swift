@@ -8,25 +8,41 @@
 
 import UIKit
 
-struct SQEmployeeListCellModel:Hashable {
+struct SQEmployeeListCellModel {
     
+    private(set) var imageFetcher: SQImageFetcheble
     let picture: String?
     let name: String
     let team: String
     let email: String
     
-    init(_ employee: SQEmployee) {
+    init(_ employee: SQEmployee, _ fetcher: SQImageFetcheble = SQImageFetcher()) {
+        imageFetcher = fetcher
         picture = employee.photo_url_small
         name    = employee.full_name
         team    = employee.team
         email   = employee.email_address
     }
     
-    func decorate(_ cell: SQEmployeeListCell) {
-        cell.name.text = name
-        cell.team.text = team
-        cell.email.text = email
-        cell.picture.loadImage(with: picture ?? "", placeholder: UIImage(systemName: "person.circle.fill"))
+    func fetchImage(_ completion: @escaping SQImageFetcheble.Handler) {
+        guard let pictureURL = URL(string: picture ?? "") else {
+            return
+        }
+        imageFetcher.fetchImage(with: pictureURL, completion)
     }
-    
+    func pauseFetchingImage() {
+        imageFetcher.pauseFetching()
+    }
+}
+
+extension SQEmployeeListCellModel: Equatable {
+    static func == (lhs: SQEmployeeListCellModel, rhs: SQEmployeeListCellModel) -> Bool {
+        return lhs.email == rhs.email
+    }
+}
+
+extension SQEmployeeListCellModel: Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(email)
+    }
 }

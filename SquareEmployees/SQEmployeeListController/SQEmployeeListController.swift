@@ -16,8 +16,8 @@ class SQEmployeeListController: UITableViewController {
         self.viewModel = viewModel
         super.init(style: .plain)
         tableView.tableFooterView = UIView()
-        tableView.register(SQEmployeeListCell.self, forCellReuseIdentifier: SQEmployeeListCell.reuseIdentifier)
-        tableView.dataSource = viewModel.createDataSource(using: tableView)
+        tableView.prefetchDataSource = self
+        viewModel.setupDataSource(of: tableView)
         bind()
     }
     
@@ -83,4 +83,12 @@ class SQEmployeeListController: UITableViewController {
     
 }
 
-
+extension SQEmployeeListController: UITableViewDataSourcePrefetching {
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        viewModel.send(.prefetch(items: indexPaths))
+    }
+    
+    func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
+        viewModel.send(.cancelPrefetch(items: indexPaths))
+    }
+}

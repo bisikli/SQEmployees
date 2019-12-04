@@ -11,4 +11,8 @@ import UIKit
 protocol SQImageFetcheble {
     typealias Handler = (Result<UIImage, Error>) -> Void
     func fetchImage(with url: URL, _ handler: @escaping Handler)
+    func pauseFetching()
+}
+extension SQImageFetcheble {
+    func pauseFetching() {}
 }

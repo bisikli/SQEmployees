@@ -16,6 +16,8 @@ class SQEmployeeListControllerModel {
     
     enum Action {
         case fetch
+        case prefetch(items:[IndexPath])
+        case cancelPrefetch(items:[IndexPath])
     }
     
     enum Status {
@@ -26,7 +28,7 @@ class SQEmployeeListControllerModel {
     
     private let fetcher: SQEmployeeFetchable
     private var diffableDataSource : UITableViewDiffableDataSource<SQEmployeeListSection, SQEmployeeListCellModel>?
-    
+ 
     private var cellModels = [SQEmployeeListCellModel]()
     var onStatusChanged : (Status)->Void = { _ in }
     
@@ -44,7 +46,7 @@ class SQEmployeeListControllerModel {
                     case .failure(let error):
                         self.onStatusChanged(.error(error))
                     case .success(let employees):
-                        self.cellModels = employees.map(SQEmployeeListCellModel.init)
+                        self.cellModels = employees.map({SQEmployeeListCellModel($0)})
                         self.diffableDataSource?.apply(self.snapshot, animatingDifferences: false)
                         if self.cellModels.isEmpty {
                             self.onStatusChanged(.empty)
@@ -53,21 +55,40 @@ class SQEmployeeListControllerModel {
                 }
             }
             break
+        case .prefetch(let items):
+            for indexPath in items {
+                if indexPath.row < cellModels.count {
+                    cellModels[indexPath.row].fetchImage { (_) in }
+                } else {
+                    //download new cellmodels first
+                }
+            }
+            break
+        case .cancelPrefetch(let items):
+            for indexPath in items {
+                if indexPath.row < cellModels.count {
+                    cellModels[indexPath.row].pauseFetchingImage()
+                } else {
+                    //download new cellmodels first
+                }
+            }
+            break
         }
     }
     
-    func createDataSource(using tableView: UITableView) -> UITableViewDiffableDataSource<SQEmployeeListSection, SQEmployeeListCellModel>? {
+    func setupDataSource(of tableView: UITableView) {
+        tableView.register(SQEmployeeListCell.self, forCellReuseIdentifier: SQEmployeeListCell.reuseIdentifier)
         diffableDataSource = UITableViewDiffableDataSource(tableView: tableView) { (tableView, indexPath, cellModel) -> UITableViewCell? in
                 
             let cell = tableView.dequeueReusableCell(withIdentifier: SQEmployeeListCell.reuseIdentifier, for: indexPath) as! SQEmployeeListCell
             
-            cellModel.decorate(cell)
+            cell.decorate(cellModel)
             
             return cell
         }
-        
-        return diffableDataSource!
+        tableView.dataSource = diffableDataSource
     }
+
     
     var snapshot : NSDiffableDataSourceSnapshot<SQEmployeeListSection,SQEmployeeListCellModel> {
         var snapshot = NSDiffableDataSourceSnapshot<SQEmployeeListSection,SQEmployeeListCellModel>()
@@ -78,4 +99,5 @@ class SQEmployeeListControllerModel {
     
     
 }
+
 
