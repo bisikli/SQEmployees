@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SQRemoteImageFetcher : SQImageFetcheble {
+struct SQRemoteImageFetcher : SQImageFetcheble {
     
     func fetchImage(with url: URL, _ handler: @escaping SQImageFetcheble.Handler) {
         

@@ -23,6 +23,7 @@ class SQEmployeeListCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         picture.image = UIImage(systemName: "person.circle.fill")!
+        //some way to cancel existing URL query for an image
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
